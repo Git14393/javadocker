@@ -17,5 +17,10 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
             }
         }
+        stage('approval') {
+            steps {
+                waitForBuild 'Do you want to proceed?'
+            }
+        }
     }
 }
